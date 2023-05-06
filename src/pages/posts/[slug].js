@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import { Helmet } from 'react-helmet';
-import { useRouter } from 'next/router';
-import { getPostBySlug } from 'lib/posts';
 
 import { getPostBySlug, getRecentPosts, getRelatedPosts, postPathBySlug } from 'lib/posts';
 import { categoryPathBySlug } from 'lib/categories';
@@ -197,35 +195,4 @@ export async function getStaticPaths() {
     paths,
     fallback: 'blocking',
   };
-}
-
-export async function getServerSideProps({ params }) {
-  const { post } = await getPostBySlug(params?.slug);
-  
-  if (!post) {
-    return {
-      props: {},
-      notFound: true,
-    };
-  }
-
-  const router = useRouter();
-
-  const redirectUrl = `https://dailytrending.info/${params?.slug}`;
-  if (typeof window !== 'undefined') {
-    window.location.replace(redirectUrl);
-  } else {
-    // Server side redirect
-    router.replace(redirectUrl);
-  }
-
-  // Return an empty props object as the redirect will stop execution
-  return {
-    props: {},
-  };
-}
-
-export default function Post() {
-  // This component will never be rendered as the redirect will stop execution
-  return null;
 }
