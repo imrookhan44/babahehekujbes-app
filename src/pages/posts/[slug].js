@@ -196,3 +196,36 @@ export async function getStaticPaths() {
     fallback: 'blocking',
   };
 }
+
+import { getRedirectUrl } from 'lib/redirect';
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
+const { WORDPRESS_DOMAIN } = publicRuntimeConfig;
+
+
+export async function getStaticProps({ params = {}, req }) {
+  const { post } = await getPostBySlug(params?.slug);
+
+  if (!post) {
+    return {
+      props: {},
+      notFound: true,
+    };
+  }
+
+  // Redirect to WordPress domain
+  const redirectUrl = getRedirectUrl(req, WORDPRESS_DOMAIN);
+  const redirectStatus = getRedirectStatus(req);
+  if (redirectUrl) {
+    return {
+      redirect: {
+        destination: redirectUrl,
+        permanent: redirectStatus === 301,
+      },
+    };
+  }
+
+  // ...
+}
+
