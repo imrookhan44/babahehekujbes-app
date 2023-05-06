@@ -51,3 +51,9 @@ function parseEnvValue(value, defaultValue) {
   if (value === false || value === 'false') return false;
   return value;
 }
+
+module.exports = {
+  publicRuntimeConfig: {
+    WORDPRESS_DOMAIN: process.env.WORDPRESS_DOMAIN,
+  },
+};
