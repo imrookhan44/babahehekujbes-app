@@ -32,6 +32,8 @@ module.exports = {
     '@next/next/no-img-element': 'off',
       'prettier/prettier': 'off',
     //ignore the defined but never used error
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+        'semi': 'off',
+
   },
 };
