@@ -30,5 +30,8 @@ module.exports = {
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     '@next/next/no-img-element': 'off',
+      'prettier/prettier': 'off',
+    //ignore the defined but never used error
+    'no-unused-vars': 'off'
   },
 };
