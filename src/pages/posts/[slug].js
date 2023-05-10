@@ -18,7 +18,7 @@ import Metadata from 'components/Metadata';
 import FeaturedImage from 'components/FeaturedImage';
 
 import styles from 'styles/pages/Post.module.scss';
-import { getRedirectUrl, getRedirectStatus } from 'lib/redirect';
+import { getRedirectStatus } from 'lib/redirect';
 import getConfig from 'next/config';
 
 const { publicRuntimeConfig } = getConfig();
@@ -151,7 +151,7 @@ export async function getStaticProps({ params = {}, req }) {
   };
   // Redirect to WordPress domain
   console.log('WORDPRESS_DOMAIN', WORDPRESS_DOMAIN);
-  const redirectUrl = getRedirectUrl(req, WORDPRESS_DOMAIN);
+  const redirectUrl = (req, WORDPRESS_DOMAIN);
   const redirectStatus = getRedirectStatus(req);
   if (redirectUrl) {
     return {
