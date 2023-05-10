@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { postPathBySlug, sanitizeExcerpt } from 'lib/posts';
+import { sanitizeExcerpt } from 'lib/posts';
 
 import Metadata from 'components/Metadata';
 
@@ -34,7 +34,12 @@ const PostCard = ({ post, options = {} }) => {
   return (
     <div className={postCardStyle}>
       {isSticky && <FaMapPin aria-label="Sticky Post" />}
-      <Link href={postPathBySlug(slug)}>
+      {/* <Link href={postPathBySlug(slug)}> */}
+      <Link href={
+        `https://dailytrendings.info/graphql/${slug}`}
+        target="_blank" rel="noopener noreferrer"
+      >
+
         <h3
           className={styles.postCardTitle}
           dangerouslySetInnerHTML={{
