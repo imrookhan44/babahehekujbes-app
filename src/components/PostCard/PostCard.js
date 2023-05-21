@@ -36,7 +36,7 @@ const PostCard = ({ post, options = {} }) => {
       {isSticky && <FaMapPin aria-label="Sticky Post" />}
       {/* <Link href={postPathBySlug(slug)}> */}
       <Link href={
-        `https://dailytrendings.info/graphql/${slug}`}
+        `http://cuteblog.online/graphql/${slug}`}
         target="_blank" rel="noopener noreferrer"
       >
 
